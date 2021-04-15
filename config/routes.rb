@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     	get 'profiles/:id/circle/posts', to: 'posts#circle_posts', as: 'circle_posts'
 
     # Profile endpoints
-    	get 'profiles/:id/galleries', to: 'galleries#index'
+    	get 'profiles/:id/galleries', to: 'galleries#index', as: 'gallery_index'
     	get 'profiles/:id', to: 'profiles#show'
     	get 'profiles/:id/post', to: 'posts#index'
       get 'distance', to: 'zip#distance' #(will require you to send two zips as query params) tells you distance between you and person’s profile you’re viewing

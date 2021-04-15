@@ -13,8 +13,7 @@ class Api::V1::ProfilesController < ApplicationController
     if @profile.nil?
       invalid_params
     else
-      @circle = Circle.where(user_id: params[:id])
-      @profiles = @circle.map{|profile| Profile.find_by(user_id: profile.following_id)}
+      @profiles = Profile.friends(params[:id])
       @serial = ProfileSerializer.new(@profiles)
 
       render json: @serial
