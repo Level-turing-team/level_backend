@@ -21,8 +21,13 @@ class Api::V1::PostsController < ApplicationController
   end
 
   def index
-    @profile = Profile.find(user_id: params[:id])
+    @profile = Profile.find_by(user_id: params[:id])
     return invalid_params if @profile.nil?
+
+    @posts = Post.where(user_id: params[:id])
+    @serial = PostSerializer.new(@posts)
+
+    render json: @serial
   end
 
   private
