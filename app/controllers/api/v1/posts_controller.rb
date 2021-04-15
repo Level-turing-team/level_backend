@@ -20,6 +20,11 @@ class Api::V1::PostsController < ApplicationController
     render json: @serial
   end
 
+  def index
+    @profile = Profile.find(user_id: params[:id])
+    return invalid_params if @profile.nil?
+  end
+
   private
 
   def post_params

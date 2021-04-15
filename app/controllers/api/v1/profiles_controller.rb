@@ -20,6 +20,14 @@ class Api::V1::ProfilesController < ApplicationController
     end
   end
 
+  def show
+    @profile = Profile.find_by(user_id: params[:id])
+    return invalid_params if @profile.nil?
+    @serial = ProfileSerializer.new(@profile)
+
+    render json: @serial
+  end
+
   private
 
   def profile_params
