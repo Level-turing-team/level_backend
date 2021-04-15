@@ -1,7 +1,5 @@
 class Circle < ApplicationRecord
-  belongs_to :follower, class_name: 'User'
-  belongs_to :followee, class_name: 'User'
 
-  validates :followee_id, presence: true
-  validates :follower_id, presence: true
+  validates :user_id, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  validates :following_id, presence: true, numericality: { only_integer: true, greater_than: 0 }
 end

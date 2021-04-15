@@ -1,5 +1,4 @@
 class Post < ApplicationRecord
-  belongs_to :user, foreign_key: 'user_google_id', primary_key: 'google_id'
-
+  validates :user_id, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validates :content, presence: true
 end
