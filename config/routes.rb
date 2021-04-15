@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     	get 'profiles/:id/galleries', to: 'galleries#index', as: 'gallery_index'
     	get 'profiles/:id', to: 'profiles#show', as: 'profile_show'
     	get 'profiles/:id/post', to: 'posts#index', as: 'posts'
-      get 'distance', to: 'zip#distance', as: 'distance' #(will require you to send two zips as query params) tells you distance between you and person’s profile you’re viewing
+      get 'distance', to: 'zipcode#distance', as: 'distance' #(will require you to send two zips as query params) tells you distance between you and person’s profile you’re viewing
 
     # Galleries
     	post 'profiles/:id/galleries', to: 'galleries#create', as: 'new_gallery'
