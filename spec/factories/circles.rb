@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :circle do
-    user_id { nil }
-    follwer_id { nil }
+    followee_id { nil }
+    follower_id { nil }
   end
 end
