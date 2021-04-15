@@ -2,14 +2,14 @@ require 'rails_helper'
 
 RSpec.describe 'Api::V1::Posts CirclePost', type: :request do
   before :each do
-    @user_1 = create(:user)
-    @posts = create_list(:post, 10, user_google_id: @user_1.google_id)
-    @user_2 = create(:user)
+    @profile_1 = create(:profile)
+    @posts = create_list(:post, 10, user_id: @profile_1.user_id)
+    @profile_2 = create(:profile)
   end
 
   describe "happy path" do
     it 'returns a 200 status and json response with circle posts' do
-      get api_v1_circle_posts_path(@user_1.google_id)
+      get api_v1_circle_posts_path(@profile_1.user_id)
 
       json = JSON.parse(response.body, symbolize_names: true)
       expect(response.status).to eq(200)
@@ -18,11 +18,11 @@ RSpec.describe 'Api::V1::Posts CirclePost', type: :request do
       expect(json[:data][0][:type]).to eq('post')
       expect(json[:data][0][:attributes]).to have_key(:content)
       expect(json[:data][0][:attributes]).to have_key(:link)
-      expect(json[:data][0][:attributes][:user_google_id]).to eq(@user_1.google_id)
+      expect(json[:data][0][:attributes][:user_id]).to eq(@profile_1.user_id)
     end
 
-    it 'returns data as an empty array if user has no posts' do
-      get api_v1_circle_posts_path(@user_2.google_id)
+    it 'returns data as an empty array if profile has no posts' do
+      get api_v1_circle_posts_path(@profile_2.user_id)
 
       json = JSON.parse(response.body, symbolize_names: true)
       expect(response.status).to eq(200)
@@ -31,7 +31,7 @@ RSpec.describe 'Api::V1::Posts CirclePost', type: :request do
   end
 
   describe 'sad path' do
-    it 'should return 400 if the user is invalid' do
+    it 'should return 400 if the profile is invalid' do
       get api_v1_circle_posts_path(21039123012)
 
       json = JSON.parse(response.body, symbolize_names: true)
