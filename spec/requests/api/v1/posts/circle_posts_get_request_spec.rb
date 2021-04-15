@@ -3,8 +3,11 @@ require 'rails_helper'
 RSpec.describe 'Api::V1::Posts CirclePost', type: :request do
   before :each do
     @profile_1 = create(:profile)
-    @posts = create_list(:post, 10, user_id: @profile_1.user_id)
     @profile_2 = create(:profile)
+    @profile_3 = create(:profile)
+    @posts = create_list(:post, 10, user_id: @profile_2.user_id)
+    Circle.create(user_id: @profile_1.user_id, following_id: @profile_2.user_id)
+    Circle.create(user_id: @profile_1.user_id, following_id: @profile_3.user_id)
   end
 
   describe "happy path" do
@@ -18,7 +21,7 @@ RSpec.describe 'Api::V1::Posts CirclePost', type: :request do
       expect(json[:data][0][:type]).to eq('post')
       expect(json[:data][0][:attributes]).to have_key(:content)
       expect(json[:data][0][:attributes]).to have_key(:link)
-      expect(json[:data][0][:attributes][:user_id]).to eq(@profile_1.user_id)
+      expect(json[:data][0][:attributes][:user_id]).to eq(@profile_2.user_id)
     end
 
     it 'returns data as an empty array if profile has no posts' do
@@ -32,7 +35,7 @@ RSpec.describe 'Api::V1::Posts CirclePost', type: :request do
 
   describe 'sad path' do
     it 'should return 400 if the profile is invalid' do
-      get api_v1_circle_posts_path(21039123012)
+      get api_v1_circle_posts_path("NOPE")
 
       json = JSON.parse(response.body, symbolize_names: true)
       expect(response.status).to eq(400)
