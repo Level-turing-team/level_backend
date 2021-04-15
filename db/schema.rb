@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_14_014306) do
+ActiveRecord::Schema.define(version: 2021_04_15_015323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,29 +37,47 @@ ActiveRecord::Schema.define(version: 2021_04_14_014306) do
   end
 
   create_table "circles", force: :cascade do |t|
-    t.integer "followee_id"
-    t.integer "follower_id"
+    t.bigint "user_id"
+    t.bigint "following_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_circles_on_user_id"
+  end
+
+  create_table "galleries", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_galleries_on_user_id"
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.bigint "gallery_id"
+    t.string "description"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gallery_id"], name: "index_photos_on_gallery_id"
   end
 
   create_table "posts", force: :cascade do |t|
+    t.bigint "user_id"
     t.text "content"
     t.string "link"
-    t.string "user_google_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "user_name"
+  create_table "profiles", force: :cascade do |t|
+    t.bigint "user_id"
     t.string "zipcode"
-    t.string "google_id"
-    t.string "first_name"
-    t.string "last_name"
+    t.string "profile_picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "photos", "galleries"
 end
