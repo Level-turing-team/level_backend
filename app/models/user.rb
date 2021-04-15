@@ -14,5 +14,6 @@ class User < ApplicationRecord
   has_many :followers, through: :following_users
 
   has_many :posts, foreign_key: 'user_google_id', primary_key: 'google_id'
+  has_many :galleries, foreign_key: 'user_google_id', primary_key: 'google_id'
 
 end
