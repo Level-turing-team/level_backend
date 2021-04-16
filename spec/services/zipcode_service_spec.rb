@@ -18,4 +18,17 @@ RSpec.describe ZipcodeService, type: :model do
     end
   end
 
+  describe "#get_zipcodes" do
+    it "should return json for all profile near me", :vcr do
+      result = ZipcodeService.get_zipcodes(@profile_1.zipcode, 10)
+      expect(result.class).to eq(Hash)
+      expect(result).to have_key('original_code')
+      expect(result).to have_key('valid_codes')
+      expect(result['valid_codes'].class).to eq(Array)
+      expect(result['valid_codes'][0]).to have_key('city')
+      expect(result['valid_codes'][0]).to have_key('state')
+      expect(result['valid_codes'][0]).to have_key('distance')
+    end
+  end
+
 end

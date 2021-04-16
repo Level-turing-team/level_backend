@@ -1,0 +1,39 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://obscure-eyrie-43294.herokuapp.com/radius/80123/10
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.3.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1934'
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - WEBrick/1.4.2 (Ruby/2.6.6/2020-03-31)
+      Date:
+      - Fri, 16 Apr 2021 01:05:02 GMT
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '{"original_code":"80123","valid_codes":[{"code":"80123","city":"Littleton","state":"CO","city_en":null,"state_en":null,"distance":0},{"code":"80235","city":"Denver","state":"CO","city_en":null,"state_en":null,"distance":1.92},{"code":"80128","city":"Littleton","state":"CO","city_en":null,"state_en":null,"distance":2.02},{"code":"80127","city":"Littleton","state":"CO","city_en":null,"state_en":null,"distance":3.01},{"code":"80227","city":"Denver","state":"CO","city_en":null,"state_en":null,"distance":3.2},{"code":"80236","city":"Denver","state":"CO","city_en":null,"state_en":null,"distance":3.6},{"code":"80160","city":"Littleton","state":"CO","city_en":null,"state_en":null,"distance":3.94},{"code":"80161","city":"Littleton","state":"CO","city_en":null,"state_en":null,"distance":3.94},{"code":"80165","city":"Littleton","state":"CO","city_en":null,"state_en":null,"distance":3.94},{"code":"80166","city":"Littleton","state":"CO","city_en":null,"state_en":null,"distance":3.94},{"code":"80465","city":"Morrison","state":"CO","city_en":null,"state_en":null,"distance":4.53},{"code":"80110","city":"Englewood","state":"CO","city_en":null,"state_en":null,"distance":4.66},{"code":"80232","city":"Denver","state":"CO","city_en":null,"state_en":null,"distance":4.76},{"code":"80120","city":"Littleton","state":"CO","city_en":null,"state_en":null,"distance":4.79},{"code":"80225","city":"Denver","state":"CO","city_en":null,"state_en":null,"distance":5.53},{"code":"80150","city":"Englewood","state":"CO","city_en":null,"state_en":null,"distance":5.76},{"code":"80151","city":"Englewood","state":"CO","city_en":null,"state_en":null,"distance":5.76},{"code":"80155","city":"Englewood","state":"CO","city_en":null,"state_en":null,"distance":5.76},{"code":"80228","city":"Denver","state":"CO","city_en":null,"state_en":null,"distance":5.87},{"code":"80219","city":"Denver","state":"CO","city_en":null,"state_en":null,"distance":5.98}]}'
+  recorded_at: Fri, 16 Apr 2021 01:05:02 GMT
+recorded_with: VCR 6.0.0
