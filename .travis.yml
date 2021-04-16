@@ -15,4 +15,4 @@ deploy:
     repo: Level-turing-team/level_backend
     branch: main
   skip_cleanup: 'true'
-  run: rails db:migrate
+  run: rails db:{migrate,seed}
