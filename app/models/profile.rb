@@ -10,4 +10,9 @@ class Profile < ApplicationRecord
     post_ids = friends(user_id).joins('INNER JOIN posts on posts.user_id = profiles.user_id').pluck('posts.id')
     Post.find(post_ids)
   end
+
+   def tags
+     tag_ids = ProfileTag.where(user_id: self.user_id).pluck(:tag_id)
+     Tag.find(tag_ids)
+   end
 end

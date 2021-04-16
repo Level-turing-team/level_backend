@@ -1,4 +1,14 @@
 class Api::V1::ProfilesController < ApplicationController
+
+  def near_me
+    @profile = Profile.find_by(user_id: params[:id])
+    return invalid_params if @profile.nil?
+    @zipcodes = ZipcodeFacade.near_me(@profile.zipcode)
+    @profiles = Profile.where(zipcode: @zipcodes)
+    @serial = ProfileSerializer.new(@profiles)
+    render json: @serial
+  end
+
   def create
     @profile = Profile.create(profile_params)
     if @profile.save
