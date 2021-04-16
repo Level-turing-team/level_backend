@@ -52,12 +52,6 @@ ActiveRecord::Schema.define(version: 2021_04_15_231540) do
     t.index ["user_id"], name: "index_galleries_on_user_id"
   end
 
-  create_table "medium", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "photos", force: :cascade do |t|
     t.bigint "gallery_id"
     t.string "description"
