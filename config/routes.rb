@@ -21,9 +21,14 @@ Rails.application.routes.draw do
     	get 'profiles/:id/galleries/:gallery_id/photos', to: 'photos#index', as: 'photos'
 
     # Discover
-    	get 'discover/profiles', to: 'profiles#near_me', as: 'near_me'
+    	get 'profiles/:id/discover', to: 'profiles#near_me', as: 'near_me'
     	get 'photos', to: 'photos#discover_index', as: 'discover_index'
     	get 'profiles', to: 'profiles#index', as: 'profile_search' # accepts ONLY one query param (location, medium, name)
+
+      # Tags
+      get 'profile/:id/tags', to: 'tags#index', as: 'tags_index'
+      post 'tags', to: 'tags#create', as: 'tags_create'
+      post 'profile/:id/tags', to: 'tags#tags_user_create', as: 'tags_user_create'
     end
   end
 end

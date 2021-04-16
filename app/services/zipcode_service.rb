@@ -5,6 +5,11 @@ class ZipcodeService
     JSON.parse(response.body)
   end
 
+  def self.get_zipcodes(zipcode, radius)
+    response = conn.get("/radius/#{zipcode}/#{radius}")
+    JSON.parse(response.body)
+  end
+
   def self.conn
     @conn ||= Faraday.new(url: 'https://obscure-eyrie-43294.herokuapp.com')
   end

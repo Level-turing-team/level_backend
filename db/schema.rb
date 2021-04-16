@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_15_015323) do
+ActiveRecord::Schema.define(version: 2021_04_15_231540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,12 @@ ActiveRecord::Schema.define(version: 2021_04_15_015323) do
     t.index ["user_id"], name: "index_galleries_on_user_id"
   end
 
+  create_table "medium", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "photos", force: :cascade do |t|
     t.bigint "gallery_id"
     t.string "description"
@@ -70,6 +76,15 @@ ActiveRecord::Schema.define(version: 2021_04_15_015323) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  create_table "profile_tags", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_profile_tags_on_tag_id"
+    t.index ["user_id"], name: "index_profile_tags_on_user_id"
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.bigint "user_id"
     t.string "zipcode"
@@ -78,6 +93,13 @@ ActiveRecord::Schema.define(version: 2021_04_15_015323) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "photos", "galleries"
+  add_foreign_key "profile_tags", "tags"
 end
