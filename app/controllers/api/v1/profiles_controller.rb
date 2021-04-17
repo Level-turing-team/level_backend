@@ -38,6 +38,26 @@ class Api::V1::ProfilesController < ApplicationController
     render json: @serial
   end
 
+  def index
+    require "pry"; binding.pry
+
+    if param[:tag] && !param[:name] && !params[:radius]
+      @tag = Tag.find_by(params[:tag])[0]
+      @profiles = Profile.profiles_by_tag(@tag)
+      @serial = ProfileSerializer.new(@serial)
+    elsif !param[:tag] && param[:name] && !params[:radius]
+      @profiles = Profile.search_by_name(params[:name])
+      @serial = ProfileSerializer.new(@serial)
+    elsif !param[:tag] && !param[:name] && params[:radius]
+      @zipcodes = ZipcodeService.get_zipcodes()
+
+    else
+    end
+
+
+    #going to have to reach out to the distance endpoint
+  end
+
   private
 
   def profile_params
