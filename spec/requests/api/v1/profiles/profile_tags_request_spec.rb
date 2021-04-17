@@ -4,9 +4,8 @@ RSpec.describe 'Api::V1::Tag Index', type: :request do
   before :each do
     @profile_1 = create(:profile)
     @profile_2 = create(:profile)
-
-    @tag1 = create(:tag)
-    @tag2 = create(:tag)
+    @tag1 = Tag.create(name: 'artist')
+    @tag2 = Tag.create(name: 'sculptor')
     ProfileTag.create(user_id: @profile_1.user_id, tag_id: @tag1.id)
     ProfileTag.create(user_id: @profile_1.user_id, tag_id: @tag2.id)
   end

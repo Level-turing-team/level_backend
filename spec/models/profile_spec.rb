@@ -16,12 +16,12 @@ RSpec.describe Profile, type: :model do
     Circle.create(user_id: @profile_2.user_id, following_id: @profile_3.user_id)
     @post1 = create(:post, user_id: @profile_2.user_id)
     @post2 = create(:post, user_id: @profile_3.user_id)
-    @tag1 = create(:tag)
-    @tag2 = create(:tag)
+    @tag1 = Tag.create(name: 'artist')
+    @tag2 = Tag.create(name: 'musician')
     ProfileTag.create(user_id: @profile_1.user_id, tag_id: @tag1.id)
     ProfileTag.create(user_id: @profile_1.user_id, tag_id: @tag2.id)
   end
-  
+
   describe "class methods" do
     describe "#friends" do
       it "should return all profile friends" do
