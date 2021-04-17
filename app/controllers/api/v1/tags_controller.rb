@@ -27,8 +27,6 @@ class Api::V1::TagsController < ApplicationController
     render json: {data: 'tags successfully created'}, status: :created
   end
 
-
-
   private
 
   def tag_params

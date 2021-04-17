@@ -5,7 +5,7 @@ RSpec.describe 'Api::V1::Tags Create', type: :request do
   describe "Happy Path" do
     it "should create tag and return status 201" do
       valid_params = {
-        name: Faker::Name.name
+        name: 'thedude'
       }
       post api_v1_tags_create_path, params: valid_params
       expect(response).to have_http_status(201)

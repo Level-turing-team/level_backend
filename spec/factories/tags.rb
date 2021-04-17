@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :tag do
-    name { Faker::Name.initials(5) }
+    name { Faker::Internet.user_name(5..8) }
   end
 end
