@@ -6,7 +6,8 @@ RSpec.describe 'Api::V1::Profiles Post', type: :request do
       valid_params = {
                         zipcode: '80021',
                         user_id: '11111',
-                        profile_picture: 'www.google.com'
+                        profile_picture: 'www.google.com',
+                        username: 'username'
                       }
       post api_v1_profiles_path, params: valid_params
 
@@ -20,7 +21,8 @@ RSpec.describe 'Api::V1::Profiles Post', type: :request do
       invalid_params = {
         zipcode: 80021,
         user_id: 'A11111',
-        profile_picture: 'www.google.com'
+        profile_picture: 'www.google.com',
+        username: 'username'
       }
       post api_v1_profiles_path, params: invalid_params
 
