@@ -11,6 +11,7 @@ class ZipcodeFacade
   end
 
   def self.get_zipcodes(zipcode, radius)
+    return [] if ZipcodeService.get_zipcodes(zipcode, radius)['body']
     data = ZipcodeService.get_zipcodes(zipcode, radius)['valid_codes']
     data.map do |object|
       object['code'] if object['code']

@@ -43,14 +43,14 @@ class Api::V1::ProfilesController < ApplicationController
     return invalid_params if @profile.nil?
 
     if params[:tag] && !params[:name] && !params[:radius]
-      @profiles = Profile.profiles_by_tag(params[:tag]).where.not(user_id: @profile.user_id)
+      @profiles = Profile.profiles_by_tag(params[:tag], @profile.user_id)
       @serial = ProfileSerializer.new(@profiles)
       render json: @serial
     elsif !params[:tag] && params[:name] && !params[:radius]
       @profiles = Profile.search_by_name(params[:name])
       @serial = ProfileSerializer.new(@profiles)
       render json: @serial
-    elsif !params[:tag] && !params[:name] && params[:radius].to_i > 0
+    elsif !params[:tag] && !params[:name] && params[:radius]
       @zipcodes = ZipcodeFacade.get_zipcodes(@profile.zipcode, params[:radius])
       @profiles = Profile.where(zipcode: @zipcodes).where.not(user_id: @profile.user_id)
       @serial = ProfileSerializer.new(@profiles)

@@ -63,26 +63,26 @@ RSpec.describe 'Api::V1::Profile Index', type: :request do
       expect(response.status).to eq(400)
     end
 
-    it 'returns empty data if there are no matches' do
+    it 'returns empty data if there are no matches', :vcr do
       get api_v1_profile_search_path(@profile1.user_id), params: {name: "epsbcuw" }
-      json = JSON.parse(response.body, symbolize_names: true)
+      json1 = JSON.parse(response.body, symbolize_names: true)
       expect(response.status).to eq(200)
-      expect(json[:data]).to eq([])
+      expect(json1[:data]).to eq([])
 
       get api_v1_profile_search_path(@profile1.user_id), params: { radius: -1 }
-      json = JSON.parse(response.body, symbolize_names: true)
+      json2 = JSON.parse(response.body, symbolize_names: true)
       expect(response.status).to eq(200)
-      expect(json[:data]).to eq([])
+      expect(json2[:data]).to eq([])
 
       get api_v1_profile_search_path(@profile1.user_id), params: { radius: 'hello' }
-      json = JSON.parse(response.body, symbolize_names: true)
+      json3 = JSON.parse(response.body, symbolize_names: true)
       expect(response.status).to eq(200)
-      expect(json[:data]).to eq([])
+      expect(json3[:data]).to eq([])
 
       get api_v1_profile_search_path(@profile1.user_id), params: { tag: 'regrn'}
-      json = JSON.parse(response.body, symbolize_names: true)
+      json4 = JSON.parse(response.body, symbolize_names: true)
       expect(response.status).to eq(200)
-      expect(json[:data]).to eq([])
+      expect(json4[:data]).to eq([])
     end
   end
 end
