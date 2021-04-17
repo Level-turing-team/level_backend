@@ -3,8 +3,8 @@ RSpec.describe "Api::V1::Tags profile_tags create", type: :request do
   before :each do
     @profile_1 = create(:profile)
     @profile_2 = create(:profile)
-    @tag1 = create(:tag)
-    @tag2 = create(:tag)
+    @tag1 = Tag.create(name: 'artist')
+    @tag1 = Tag.create(name: 'painter')
   end
 
   describe "Happy Path" do

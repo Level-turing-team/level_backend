@@ -1,0 +1,75 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://obscure-eyrie-43294.herokuapp.com/radius/80021/5
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.3.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '325'
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - WEBrick/1.4.2 (Ruby/2.6.6/2020-03-31)
+      Date:
+      - Sat, 17 Apr 2021 02:58:51 GMT
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '{"original_code":"80021","valid_codes":[{"code":"80021","city":"Broomfield","state":"CO","city_en":null,"state_en":null,"distance":0},{"code":"80038","city":"Broomfield","state":"CO","city_en":null,"state_en":null,"distance":2.82},{"code":"80005","city":"Arvada","state":"CO","city_en":null,"state_en":null,"distance":2.99}]}'
+  recorded_at: Sat, 17 Apr 2021 02:58:51 GMT
+- request:
+    method: get
+    uri: https://obscure-eyrie-43294.herokuapp.com/radius/80021/5
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.3.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '325'
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - WEBrick/1.4.2 (Ruby/2.6.6/2020-03-31)
+      Date:
+      - Sat, 17 Apr 2021 02:58:52 GMT
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '{"original_code":"80021","valid_codes":[{"code":"80021","city":"Broomfield","state":"CO","city_en":null,"state_en":null,"distance":0},{"code":"80038","city":"Broomfield","state":"CO","city_en":null,"state_en":null,"distance":2.82},{"code":"80005","city":"Arvada","state":"CO","city_en":null,"state_en":null,"distance":2.99}]}'
+  recorded_at: Sat, 17 Apr 2021 02:58:52 GMT
+recorded_with: VCR 6.0.0

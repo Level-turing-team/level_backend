@@ -14,7 +14,53 @@ SimpleCov.add_filter ['spec', 'config', '/app/mailers', 'app/jobs', 'app/channel
 # a separate helper file that requires the additional dependencies and performs
 # the additional setup, and require it from the spec files that actually need
 # it.
-#
+def db_dump
+  @profile1 = Profile.create(username: 'cool guy', user_id: 10000001, zipcode: '80021', profile_picture: 'http://www.google.com')
+  @profile2 = Profile.create(username: 'hella tight', user_id: 10000002, zipcode: '80021', profile_picture: 'http://www.google.com')
+  @profile3 = Profile.create(username: 'dudeski', user_id: 10000003, zipcode: '80038', profile_picture: 'http://www.google.com')
+  @profile4 = Profile.create(username: 'broski', user_id: 10000004, zipcode: '80005', profile_picture: 'http://www.google.com')
+  @profile5 = Profile.create(username: 'boner champ', user_id: 10000005, zipcode: '80038', profile_picture: 'http://www.google.com')
+
+  @tag1 = Tag.create(name: 'Painter')
+  @tag2 = Tag.create(name: 'Musician')
+  @tag3 = Tag.create(name: 'Sculpter')
+  @tag4 = Tag.create(name: 'Photographer')
+  @tag5 = Tag.create(name: 'Drummer')
+
+  ProfileTag.create(user_id: @profile1.user_id, tag_id: @tag1.id)
+  ProfileTag.create(user_id: @profile1.user_id, tag_id: @tag3.id)
+  ProfileTag.create(user_id: @profile2.user_id, tag_id: @tag4.id)
+  ProfileTag.create(user_id: @profile2.user_id, tag_id: @tag5.id)
+  ProfileTag.create(user_id: @profile3.user_id, tag_id: @tag1.id)
+  ProfileTag.create(user_id: @profile3.user_id, tag_id: @tag2.id)
+  ProfileTag.create(user_id: @profile4.user_id, tag_id: @tag1.id)
+  ProfileTag.create(user_id: @profile5.user_id, tag_id: @tag2.id)
+
+  Circle.create(user_id: @profile1.user_id, following_id: @profile2.user_id)
+  Circle.create(user_id: @profile1.user_id, following_id: @profile3.user_id)
+  Circle.create(user_id: @profile1.user_id, following_id: @profile4.user_id)
+  Circle.create(user_id: @profile1.user_id, following_id: @profile5.user_id)
+  Circle.create(user_id: @profile2.user_id, following_id: @profile1.user_id)
+  Circle.create(user_id: @profile2.user_id, following_id: @profile3.user_id)
+  Circle.create(user_id: @profile2.user_id, following_id: @profile4.user_id)
+  Circle.create(user_id: @profile2.user_id, following_id: @profile5.user_id)
+  Circle.create(user_id: @profile3.user_id, following_id: @profile1.user_id)
+  Circle.create(user_id: @profile3.user_id, following_id: @profile2.user_id)
+  Circle.create(user_id: @profile3.user_id, following_id: @profile4.user_id)
+  Circle.create(user_id: @profile3.user_id, following_id: @profile5.user_id)
+
+  @post1 = Post.create(user_id: @profile1.user_id, content: "hey did you see that lil nas X video?" , link:"photoURL.com")
+  @post2 = Post.create(user_id: @profile1.user_id, content: "hey did you see that create meme?" , link:"photoURL.com")
+  @post3 = Post.create(user_id: @profile1.user_id, content: "hey did you see that riot footage?")
+  @post4 = Post.create(user_id: @profile2.user_id, content: "hey did you see that headline?" , link:"photoURL.com")
+  @post5 = Post.create(user_id: @profile2.user_id, content: "hey checkout my create shoes?" , link:"photoURL.com")
+  @post6 = Post.create(user_id: @profile3.user_id, content: "hey did you see software update?" , link:"photoURL.com")
+  @post7 = Post.create(user_id: @profile3.user_id, content: "hey did you see your mom called?")
+  @post8 = Post.create(user_id: @profile4.user_id, content: "hey did you see that we're not friends on FB anymore?" , link:"photoURL.com")
+  @post9 = Post.create(user_id: @profile4.user_id, content: "hey did you see hear about that create app called 'level'?" , link:"photoURL.com")
+  @post10 = Post.create(user_id: @profile5.user_id, content: "hey i just got hired at a sick new comapny")
+
+end
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
