@@ -4,7 +4,7 @@ RSpec.describe 'Api::V1::Galleries::Index Get', type: :request do
   before :each do
     @profile_1 = create(:profile)
     @profile_2 = create(:profile)
-    @galleries = create_list(:gallery, 5, user_id: @profile_1.user_id)
+    @galleries = create_list(:gallery, 5, user_id: @profile_1.user_id, photo_url: 'http://www.google.com')
   end
 
   describe 'happy path' do
@@ -18,8 +18,10 @@ RSpec.describe 'Api::V1::Galleries::Index Get', type: :request do
       expect(json[:data][0][:type]).to eq('gallery')
       expect(json[:data][0][:attributes][:user_id]).to eq(@profile_1.user_id)
       expect(json[:data][0][:attributes]).to have_key(:name)
+      expect(json[:data][0][:attributes]).to have_key(:photo_url)
       expect(json[:data][0][:attributes]).to have_key(:created_at)
       expect(json[:data][0][:attributes]).to have_key(:updated_at)
+      expect(json[:data][0][:attributes]).to have_key(:photo_count)
     end
 
     it 'should return an empty array for data if profile has no galleries' do
