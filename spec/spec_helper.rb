@@ -15,11 +15,11 @@ SimpleCov.add_filter ['spec', 'config', '/app/mailers', 'app/jobs', 'app/channel
 # the additional setup, and require it from the spec files that actually need
 # it.
 def db_dump
-  @profile1 = Profile.create(user_id: 10000001, zipcode: '80021', profile_picture: 'http://www.google.com')
-  @profile2 = Profile.create(user_id: 10000002, zipcode: '80022', profile_picture: 'http://www.google.com')
-  @profile3 = Profile.create(user_id: 10000003, zipcode: '80023', profile_picture: 'http://www.google.com')
-  @profile4 = Profile.create(user_id: 10000004, zipcode: '80024', profile_picture: 'http://www.google.com')
-  @profile5 = Profile.create(user_id: 10000005, zipcode: '80025', profile_picture: 'http://www.google.com')
+  @profile1 = Profile.create(username: 'cool guy', user_id: 10000001, zipcode: '80021', profile_picture: 'http://www.google.com')
+  @profile2 = Profile.create(username: 'hella tight', user_id: 10000002, zipcode: '80021', profile_picture: 'http://www.google.com')
+  @profile3 = Profile.create(username: 'dudeski', user_id: 10000003, zipcode: '80038', profile_picture: 'http://www.google.com')
+  @profile4 = Profile.create(username: 'broski', user_id: 10000004, zipcode: '80005', profile_picture: 'http://www.google.com')
+  @profile5 = Profile.create(username: 'boner champ', user_id: 10000005, zipcode: '80038', profile_picture: 'http://www.google.com')
 
   @tag1 = Tag.create(name: 'Painter')
   @tag2 = Tag.create(name: 'Musician')

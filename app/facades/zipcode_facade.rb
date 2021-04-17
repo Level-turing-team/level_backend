@@ -9,4 +9,11 @@ class ZipcodeFacade
       zip['code']
     end
   end
+
+  def self.get_zipcodes(zipcode, radius)
+    data = ZipcodeService.get_zipcodes(zipcode, radius)['valid_codes']
+    data.map do |object|
+      object['code'] if object['code']
+    end
+  end
 end

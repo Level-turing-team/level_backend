@@ -11,8 +11,18 @@ class Profile < ApplicationRecord
     Post.find(post_ids)
   end
 
-   def tags
-     tag_ids = ProfileTag.where(user_id: self.user_id).pluck(:tag_id)
-     Tag.find(tag_ids)
-   end
+  def self.profiles_by_tag(tag_name)
+    tag = Tag.where('name iLIKE ?', "%#{tag_name}%").first
+    user_ids = tag.profile_tags.pluck(:user_id)
+    Profile.where(user_id: user_ids)
+  end
+
+  def self.search_by_name(username)
+    where('username iLIKE ?', "%#{username}%")
+  end
+
+  def tags
+    tag_ids = ProfileTag.where(user_id: self.user_id).pluck(:tag_id)
+    Tag.find(tag_ids)
+  end
 end

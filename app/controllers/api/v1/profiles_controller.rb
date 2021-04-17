@@ -39,23 +39,25 @@ class Api::V1::ProfilesController < ApplicationController
   end
 
   def index
-    require "pry"; binding.pry
+    @profile = Profile.find_by(user_id: params[:id])
+    return invalid_params if @profile.nil?
 
-    if param[:tag] && !param[:name] && !params[:radius]
-      @tag = Tag.find_by(params[:tag])[0]
-      @profiles = Profile.profiles_by_tag(@tag)
-      @serial = ProfileSerializer.new(@serial)
-    elsif !param[:tag] && param[:name] && !params[:radius]
+    if params[:tag] && !params[:name] && !params[:radius]
+      @profiles = Profile.profiles_by_tag(params[:tag]).where.not(user_id: @profile.user_id)
+      @serial = ProfileSerializer.new(@profiles)
+      render json: @serial
+    elsif !params[:tag] && params[:name] && !params[:radius]
       @profiles = Profile.search_by_name(params[:name])
-      @serial = ProfileSerializer.new(@serial)
-    elsif !param[:tag] && !param[:name] && params[:radius]
-      @zipcodes = ZipcodeService.get_zipcodes()
-
+      @serial = ProfileSerializer.new(@profiles)
+      render json: @serial
+    elsif !params[:tag] && !params[:name] && params[:radius].to_i > 0
+      @zipcodes = ZipcodeFacade.get_zipcodes(@profile.zipcode, params[:radius])
+      @profiles = Profile.where(zipcode: @zipcodes).where.not(user_id: @profile.user_id)
+      @serial = ProfileSerializer.new(@profiles)
+      render json: @serial
     else
+      invalid_params
     end
-
-
-    #going to have to reach out to the distance endpoint
   end
 
   private
