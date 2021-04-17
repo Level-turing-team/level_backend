@@ -3,7 +3,8 @@ class Api::V1::TagsController < ApplicationController
   def index
     @profile = Profile.find_by(user_id: params[:id])
     return invalid_params if @profile.nil?
-    @tags = @profile.tags
+    @p_tags = ProfileTag.where(user_id: params[:id]).pluck(:tag_id)
+    @tags = Tag.find(@p_tags)
     @serial = TagSerializer.new(@tags)
 
     render json: @serial
