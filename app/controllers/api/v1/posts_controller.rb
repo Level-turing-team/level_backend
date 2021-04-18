@@ -15,7 +15,6 @@ class Api::V1::PostsController < ApplicationController
     return invalid_params if @profile.nil?
     @posts = Profile.circle_posts(params[:id])
     @serial = PostSerializer.new(@posts)
-    
     render json: @serial
   end
 
