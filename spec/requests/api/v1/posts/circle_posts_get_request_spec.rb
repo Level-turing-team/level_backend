@@ -17,10 +17,10 @@ RSpec.describe 'Api::V1::Posts CirclePost', type: :request do
       json = JSON.parse(response.body, symbolize_names: true)
       expect(response.status).to eq(200)
       expect(json[:data].length).to eq(10)
-
       expect(json[:data][0][:type]).to eq('post')
       expect(json[:data][0][:attributes]).to have_key(:content)
       expect(json[:data][0][:attributes]).to have_key(:link)
+      expect(json[:data][0][:attributes]).to have_key(:created_at)
       expect(json[:data][0][:attributes][:user_id]).to eq(@profile_2.user_id)
     end
 
