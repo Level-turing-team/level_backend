@@ -1,8 +1,9 @@
 class GallerySerializer
   include FastJsonapi::ObjectSerializer
-  attributes :user_id, :photo_url, :name, :created_at, :updated_at
+  include Rails.application.routes.url_helpers
+  attributes :user_id, :name, :created_at, :updated_at
 
-  attribute :photo_count do |gallery|
-    gallery.photos.size
+  attribute :photo_url do |gallery|
+    gallery.photo_url
   end
 end

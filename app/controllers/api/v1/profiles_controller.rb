@@ -62,6 +62,6 @@ class Api::V1::ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.permit(:user_id, :username, :zipcode, :profile_picture)
+    params.permit(:user_id, :zipcode)
   end
 end
