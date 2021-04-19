@@ -14,7 +14,7 @@ class Api::V1::PhotosController < ApplicationController
   def create
     @profile = Profile.find_by(user_id: params[:id])
     @gallery = Gallery.find_by(id: params[:gallery_id])
-    return invalid_params if @profile.nil? || @gallery.nil? || !params[:url]
+    return invalid_params if @profile.nil? || @gallery.nil?
     @photo = @gallery.photos.create!(photo_params)
     if @photo.save
       render json: { data: 'photo created successfully' }, status: 201
@@ -33,6 +33,6 @@ class Api::V1::PhotosController < ApplicationController
   private
 
   def photo_params
-    params.permit(:description, :url, :created_at, :updated_at)
+    params.permit(:description)
   end
 end
