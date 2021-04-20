@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     	post 'profiles/:id/galleries', to: 'galleries#create', as: 'new_gallery'
     	post 'profiles/:id/galleries/:gallery_id/photos', to: 'photos#create', as: 'new_photo'
     	get 'profiles/:id/galleries/:gallery_id/photos', to: 'photos#index', as: 'user_photos'
+      delete 'profiles/:id/galleries/:gallery_id', to: 'galleries#destroy'
 
     # Discover
     	get 'profiles/:id/discover', to: 'profiles#near_me', as: 'near_me'

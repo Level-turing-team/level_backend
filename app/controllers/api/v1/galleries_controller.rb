@@ -23,6 +23,11 @@ class Api::V1::GalleriesController < ApplicationController
     end
   end
 
+  def destroy
+    @gallery = Gallery.find(params[:gallery_id])
+    @gallery.destroy
+  end
+
   private
 
   def gallery_params
