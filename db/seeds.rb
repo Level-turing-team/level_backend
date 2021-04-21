@@ -12,6 +12,7 @@ Photo.destroy_all
 @profile_4 = Profile.create(username: 'photos by jim', user_id: 4, zipcode: '80303', profile_picture: 'http://www.google.com')
 @profile_5 = Profile.create(username: 'arteest', user_id: 5, zipcode: '80544', profile_picture: 'http://www.google.com')
 @profile_6 = Profile.create(username: 'former salesman', user_id: 6, zipcode: '80228', profile_picture: 'http://www.google.com')
+@profile_7 = Profile.create(username: 'Pie', user_id: 7, zipcode: '80022')
 
 @tag_1 = Tag.create(name: 'Painter')
 @tag_2 = Tag.create(name: 'Musician')
