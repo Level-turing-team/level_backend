@@ -29,11 +29,11 @@ http_interactions:
       Server:
       - WEBrick/1.4.2 (Ruby/2.6.6/2020-03-31)
       Date:
-      - Thu, 15 Apr 2021 22:33:23 GMT
+      - Wed, 21 Apr 2021 21:44:03 GMT
       Via:
       - 1.1 vegur
     body:
       encoding: UTF-8
       string: '{"original_code":"80123","distance":{"80125":9.58}}'
-  recorded_at: Thu, 15 Apr 2021 22:33:23 GMT
+  recorded_at: Wed, 21 Apr 2021 21:44:03 GMT
 recorded_with: VCR 6.0.0
