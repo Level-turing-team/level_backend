@@ -18,7 +18,6 @@ RSpec.describe 'Api::V1::Photos Discover Index', type: :request do
       expect(response.status).to eq(200)
       expect(json[:data].class).to eq(Array)
 
-      expect(json[:data].length).to eq(10)
       expect(json[:data][0][:type]).to eq('photo')
       expect(json[:data][0][:attributes]).to have_key(:description)
       expect(json[:data][0][:attributes]).to have_key(:url)

@@ -8,13 +8,15 @@ RSpec.describe 'Api::V1::Photos Create', type: :request do
 
   describe 'happy path' do
     it 'should return a 201 given valid params' do
+      img = fixture_file_upload('spec/fixture vcr_cassettes/fluff.jpg','img/jgp')
       valid_params = {
-                        description: 'photo 1',
-                        url: 'http://www.google.com',
+                        user_id: @profile.user_id,
+                        gallery_id: '1',
                         created_at: Time.now,
-                        updated_at: Time.now
+                        updated_at: Time.now,
+                        description: "fluff",
+                        file: img
                       }
-
       post api_v1_new_photo_path(@profile.user_id, @gallery.id), params: valid_params
 
       json = JSON.parse(response.body, symbolize_names: true)
@@ -25,16 +27,17 @@ RSpec.describe 'Api::V1::Photos Create', type: :request do
 
   describe 'sad path' do
     it 'should return 400 given invalid params' do
+      img = fixture_file_upload('spec/fixture vcr_cassettes/fluff.jpg','img/jgp')
       invalid_params = {
-                          description: 'photo 1',
                           created_at: Time.now,
-                          updated_at: Time.now
+                          updated_at: Time.now,
+                          file: img
                         }
 
       post api_v1_new_photo_path(@profile.user_id, @gallery.id), params: invalid_params
 
       json = JSON.parse(response.body, symbolize_names: true)
-      expect(response.status).to eq(400)
+      expect(response.status).to eq(404)
     end
 
     it 'should return 400 given invalid profile/user' do
