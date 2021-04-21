@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     	get 'profiles/:id', to: 'profiles#show', as: 'profile_show'
     	get 'profiles/:id/post', to: 'posts#index', as: 'posts'
       get 'distance', to: 'zipcode#distance', as: 'distance' #(will require you to send two zips as query params) tells you distance between you and person’s profile you’re viewing
+      post 'profiles/:id/circle', to: 'circles#create', as: 'circle_create'
 
     # Galleries
     	post 'profiles/:id/galleries', to: 'galleries#create', as: 'new_gallery'
