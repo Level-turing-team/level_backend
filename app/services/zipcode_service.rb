@@ -6,7 +6,8 @@ class ZipcodeService
   end
 
   def self.get_zipcodes(zipcode, radius)
-    response = conn.get("/radius/#{zipcode}/#{radius}")
+    radius_int = radius.to_i
+    response = conn.get("/radius/#{zipcode}/#{radius_int}")
     JSON.parse(response.body)
   end
 
