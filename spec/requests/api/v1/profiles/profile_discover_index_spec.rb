@@ -42,7 +42,7 @@ RSpec.describe 'Api::V1::Profile Index', type: :request do
 
       expect(json[:data].length).to eq(2)
       expect(json[:data][0][:type]).to eq('profile')
-      expect(json[:data][0][:attributes][:user_id]).to eq(@profile3.user_id)
+      expect(json[:data][0][:attributes][:user_id]).to eq(3)
       expect(json[:data][0][:attributes]).to have_key(:zipcode)
       expect(json[:data][0][:attributes]).to have_key(:profile_picture)
     end

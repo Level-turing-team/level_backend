@@ -21,7 +21,6 @@ RSpec.describe 'Api::V1::Galleries::Index Get', type: :request do
       expect(json[:data][0][:attributes]).to have_key(:photo_url)
       expect(json[:data][0][:attributes]).to have_key(:created_at)
       expect(json[:data][0][:attributes]).to have_key(:updated_at)
-      expect(json[:data][0][:attributes]).to have_key(:photo_count)
     end
 
     it 'should return an empty array for data if profile has no galleries' do
