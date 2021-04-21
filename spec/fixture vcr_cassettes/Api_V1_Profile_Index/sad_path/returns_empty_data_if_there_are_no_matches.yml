@@ -29,13 +29,13 @@ http_interactions:
       Server:
       - WEBrick/1.4.2 (Ruby/2.6.6/2020-03-31)
       Date:
-      - Sat, 17 Apr 2021 03:00:55 GMT
+      - Wed, 21 Apr 2021 23:37:15 GMT
       Via:
       - 1.1 vegur
     body:
       encoding: UTF-8
       string: '{"original_code":"80021","valid_codes":[]}'
-  recorded_at: Sat, 17 Apr 2021 03:00:55 GMT
+  recorded_at: Wed, 21 Apr 2021 23:37:15 GMT
 - request:
     method: get
     uri: https://obscure-eyrie-43294.herokuapp.com/radius/80021/-1
@@ -65,16 +65,16 @@ http_interactions:
       Server:
       - WEBrick/1.4.2 (Ruby/2.6.6/2020-03-31)
       Date:
-      - Sat, 17 Apr 2021 03:00:56 GMT
+      - Wed, 21 Apr 2021 23:37:16 GMT
       Via:
       - 1.1 vegur
     body:
       encoding: UTF-8
       string: '{"original_code":"80021","valid_codes":[]}'
-  recorded_at: Sat, 17 Apr 2021 03:00:56 GMT
+  recorded_at: Wed, 21 Apr 2021 23:37:16 GMT
 - request:
     method: get
-    uri: https://obscure-eyrie-43294.herokuapp.com/radius/80021/hello
+    uri: https://obscure-eyrie-43294.herokuapp.com/radius/80021/0
     body:
       encoding: US-ASCII
       string: ''
@@ -101,11 +101,11 @@ http_interactions:
       Server:
       - WEBrick/1.4.2 (Ruby/2.6.6/2020-03-31)
       Date:
-      - Sat, 17 Apr 2021 03:00:56 GMT
+      - Wed, 21 Apr 2021 23:37:17 GMT
       Via:
       - 1.1 vegur
     body:
       encoding: UTF-8
       string: '{"body":{"original_code":null,"error":"Invalid Request"}}'
-  recorded_at: Sat, 17 Apr 2021 03:00:56 GMT
+  recorded_at: Wed, 21 Apr 2021 23:37:16 GMT
 recorded_with: VCR 6.0.0
