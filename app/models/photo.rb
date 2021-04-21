@@ -1,7 +1,6 @@
 class Photo < ApplicationRecord
   belongs_to :gallery
   has_one_attached :feature
-  # validates :url, presence: true
   validates :description, presence: true
 
   def self.gallery_upload(gallery_id, photo_description, file)

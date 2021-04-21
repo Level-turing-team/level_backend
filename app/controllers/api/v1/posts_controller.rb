@@ -22,7 +22,7 @@ class Api::V1::PostsController < ApplicationController
     @profile = Profile.find_by(user_id: params[:id])
     return invalid_params if @profile.nil?
 
-    @posts = Post.where(user_id: params[:id])
+    @posts = Post.where(user_id: params[:id]).order(created_at: :desc)
     @serial = PostSerializer.new(@posts)
 
     render json: @serial
