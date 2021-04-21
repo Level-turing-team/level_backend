@@ -16,18 +16,15 @@ class Api::V1::PhotosController < ApplicationController
     @gallery = Gallery.find_by(id: params[:gallery_id])
     return invalid_params if @profile.nil? || @gallery.nil?
     @photo = @gallery.photos.create!(photo_params)
-    if @photo.save
-      @photo.feature.attach(
-      io: File.open(params[:file].tempfile.path),
-      filename: params[:file].original_filename,
-      content_type: params[:file].content_type)
-      if @photo.feature.attached?
-      @photo.update(url: url_for(@photo.feature))
-      end
-      render json: { data: 'photo created successfully' }, status: 201
-    else
-      invalid_params
+
+    @photo.feature.attach(
+    io: File.open(params[:file].tempfile.path),
+    filename: params[:file].original_filename,
+    content_type: params[:file].content_type)
+    if @photo.feature.attached?
+    @photo.update(url: url_for(@photo.feature))
     end
+    render json: { data: 'photo created successfully' }, status: 201
   end
 
   def discover_index

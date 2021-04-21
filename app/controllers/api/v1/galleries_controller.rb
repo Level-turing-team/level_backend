@@ -12,20 +12,18 @@ class Api::V1::GalleriesController < ApplicationController
     @profile = Profile.find_by(user_id: params[:id])
     return invalid_params if @profile.nil?
     @gallery = Gallery.find_or_create_by(gallery_params)
-    if @gallery.save
-      @photo = Photo.gallery_upload(@gallery.id, params[:photo_description], params[:file])
-      if @photo.feature.attached?
-      @photo.update(url: url_for(@photo.feature))
-      end
-      render json: { data: 'gallery created successfully' }, status: 201
-    else
-      invalid_params
+    @photo = Photo.gallery_upload(@gallery.id, params[:photo_description], params[:file])
+    if @photo.feature.attached?
+    @photo.update(url: url_for(@photo.feature))
     end
+    render json: { data: 'gallery created successfully' }, status: 201
   end
 
   def destroy
     @gallery = Gallery.find(params[:gallery_id])
     @gallery.destroy
+
+    render json: { data: 'gallery deleted successfully' }
   end
 
   private
