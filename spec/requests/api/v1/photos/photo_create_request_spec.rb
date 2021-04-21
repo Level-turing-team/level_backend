@@ -37,7 +37,7 @@ RSpec.describe 'Api::V1::Photos Create', type: :request do
       post api_v1_new_photo_path(@profile.user_id, @gallery.id), params: invalid_params
 
       json = JSON.parse(response.body, symbolize_names: true)
-      expect(response.status).to eq(404)
+      expect(response.status).to eq(400)
     end
 
     it 'should return 400 given invalid profile/user' do

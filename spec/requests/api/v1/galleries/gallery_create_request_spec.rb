@@ -37,7 +37,7 @@ RSpec.describe 'Api::V1:Gallery Create', type: :request do
       post api_v1_new_gallery_path(@profile.user_id), params: invalid_params
 
       json = JSON.parse(response.body, symbolize_names: true)
-      expect(response.status).to eq(404)
+      expect(response.status).to eq(400)
     end
 
     it 'should return 400 for invalid user/profile' do
