@@ -1,4 +1,4 @@
-
+![Level](https://imgur.com/vR7YuGL.png)
 
 [![Build Status](https://travis-ci.com/Level-turing-team/level_backend.svg?branch=main)](https://travis-ci.com/Level-turing-team/level_backend)
 <!-- TABLE OF CONTENTS -->
