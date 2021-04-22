@@ -63,22 +63,28 @@ RSpec.describe 'Api::V1::Profile Index', type: :request do
       expect(response.status).to eq(400)
     end
 
-    it 'returns empty data if there are no matches', :vcr do
+    it 'returns empty data if name is invalid', :vcr do
       get api_v1_profile_search_path(@profile1.user_id), params: {name: "epsbcuw" }
       json1 = JSON.parse(response.body, symbolize_names: true)
       expect(response.status).to eq(200)
       expect(json1[:data]).to eq([])
+    end
 
+    it 'returns empty data if the radius is negative', :vcr do 
       get api_v1_profile_search_path(@profile1.user_id), params: { radius: -1 }
       json2 = JSON.parse(response.body, symbolize_names: true)
       expect(response.status).to eq(200)
       expect(json2[:data]).to eq([])
+    end
 
+    it 'returns empty data if the radius is a string', :vcr do 
       get api_v1_profile_search_path(@profile1.user_id), params: { radius: 'hello' }
       json3 = JSON.parse(response.body, symbolize_names: true)
       expect(response.status).to eq(200)
       expect(json3[:data]).to eq([])
+    end
 
+    it 'returns empty data if tag is invalid', :vcr do 
       get api_v1_profile_search_path(@profile1.user_id), params: { tag: 'regrn'}
       json4 = JSON.parse(response.body, symbolize_names: true)
       expect(response.status).to eq(200)

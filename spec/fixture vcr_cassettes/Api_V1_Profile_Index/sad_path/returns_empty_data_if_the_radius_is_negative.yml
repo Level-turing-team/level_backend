@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://obscure-eyrie-43294.herokuapp.com/api/v1/radius/80021/5
+    uri: https://obscure-eyrie-43294.herokuapp.com/api/v1/radius/80021/-1
     body:
       encoding: US-ASCII
       string: ''
@@ -23,22 +23,22 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '325'
+      - '42'
       X-Content-Type-Options:
       - nosniff
       Server:
       - WEBrick/1.4.2 (Ruby/2.6.6/2020-03-31)
       Date:
-      - Thu, 22 Apr 2021 01:25:40 GMT
+      - Thu, 22 Apr 2021 01:25:42 GMT
       Via:
       - 1.1 vegur
     body:
       encoding: UTF-8
-      string: '{"original_code":"80021","valid_codes":[{"code":"80021","city":"Broomfield","state":"CO","city_en":null,"state_en":null,"distance":0},{"code":"80038","city":"Broomfield","state":"CO","city_en":null,"state_en":null,"distance":2.82},{"code":"80005","city":"Arvada","state":"CO","city_en":null,"state_en":null,"distance":2.99}]}'
-  recorded_at: Thu, 22 Apr 2021 01:25:40 GMT
+      string: '{"original_code":"80021","valid_codes":[]}'
+  recorded_at: Thu, 22 Apr 2021 01:25:42 GMT
 - request:
     method: get
-    uri: https://obscure-eyrie-43294.herokuapp.com/api/v1/radius/80021/5
+    uri: https://obscure-eyrie-43294.herokuapp.com/api/v1/radius/80021/-1
     body:
       encoding: US-ASCII
       string: ''
@@ -59,17 +59,17 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '325'
+      - '42'
       X-Content-Type-Options:
       - nosniff
       Server:
       - WEBrick/1.4.2 (Ruby/2.6.6/2020-03-31)
       Date:
-      - Thu, 22 Apr 2021 01:25:41 GMT
+      - Thu, 22 Apr 2021 01:25:43 GMT
       Via:
       - 1.1 vegur
     body:
       encoding: UTF-8
-      string: '{"original_code":"80021","valid_codes":[{"code":"80021","city":"Broomfield","state":"CO","city_en":null,"state_en":null,"distance":0},{"code":"80038","city":"Broomfield","state":"CO","city_en":null,"state_en":null,"distance":2.82},{"code":"80005","city":"Arvada","state":"CO","city_en":null,"state_en":null,"distance":2.99}]}'
-  recorded_at: Thu, 22 Apr 2021 01:25:41 GMT
+      string: '{"original_code":"80021","valid_codes":[]}'
+  recorded_at: Thu, 22 Apr 2021 01:25:43 GMT
 recorded_with: VCR 6.0.0

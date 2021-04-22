@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://obscure-eyrie-43294.herokuapp.com/distance/80123/80125
+    uri: https://obscure-eyrie-43294.herokuapp.com/api/v1/distance/80123/80125
     body:
       encoding: US-ASCII
       string: ''
@@ -29,11 +29,11 @@ http_interactions:
       Server:
       - WEBrick/1.4.2 (Ruby/2.6.6/2020-03-31)
       Date:
-      - Wed, 21 Apr 2021 21:44:03 GMT
+      - Thu, 22 Apr 2021 01:33:11 GMT
       Via:
       - 1.1 vegur
     body:
       encoding: UTF-8
       string: '{"original_code":"80123","distance":{"80125":9.58}}'
-  recorded_at: Wed, 21 Apr 2021 21:44:03 GMT
+  recorded_at: Thu, 22 Apr 2021 01:33:11 GMT
 recorded_with: VCR 6.0.0
