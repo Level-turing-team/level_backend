@@ -24,6 +24,7 @@ RSpec.describe 'Api::V1::Photos Index', type: :request do
       expect(json[:data][0][:attributes]).to have_key(:created_at)
       expect(json[:data][0][:attributes]).to have_key(:updated_at)
       expect(json[:data][0][:attributes]).to have_key(:gallery_id)
+      expect(json[:data][0][:attributes]).to have_key(:user_id)
     end
 
     it 'should return empty array for a gallery with no photos' do
