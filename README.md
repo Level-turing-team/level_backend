@@ -23,7 +23,6 @@
 </details>
 
 
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
@@ -182,7 +181,7 @@ POST   /api/v1/profiles/:id/post
 
 </details>
 
-### GET Profile's Cirlce Recent Posts
+### GET Profile's Circle Recent Posts
 * Returns the recent posts of a given profile's circle
 > Required Parameters: `:user_id` 
 ```
