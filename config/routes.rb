@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     	get 'profiles/:id/circle', to: 'profiles#circle', as: 'profiles_circle'
     	post 'profiles/:id/post', to: 'posts#create', as: 'profiles_post'
     	get 'profiles/:id/circle/posts', to: 'posts#circle_posts', as: 'circle_posts'
-      delete 'profiles/:id/circle', to: 'circles#destroy'
+      delete 'profiles/:id/circle', to: 'circles#destroy', as: 'circle_destroy'
 
     # Profile endpoints
     	get 'profiles/:id/galleries', to: 'galleries#index', as: 'gallery_index'
