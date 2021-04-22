@@ -10,13 +10,12 @@ class Api::V1::CirclesController < ApplicationController
     end
   end
 
-  def destroy 
-    circle = Circle.find_by(user_id: params[:user_id], following_id: params[:following_id])
-    circle.destroy
-    if !circle
-      render json: { data: 'circle destroyed successfully' }, status: 201
-    end  
-    
+  def destroy
+    circle = Circle.where(user_id: params[:user_id], following_id: params[:following_id])
+    if !circle.empty?
+      Circle.destroy(circle.first.id)
+      render json: { data: 'circle destroyed successfully' }
+    end
   end
 
   private
