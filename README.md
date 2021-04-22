@@ -26,13 +26,15 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-There are plenty of sites to host all types of art, from music to photos or anything else you want to share, there's less supply of apps and resources to connect you one on one with other individuals who share your drive and passion. Level helps you more easily connect with local people through our location based searches who share your passion and drive for your creative endeavors. Level concentrates as much of your work as you want from other hosting services to help ensure the connections you make are fruitful and grounded in common interest prior to taking the jump and meeting a co-collaborator in person. Get connected. Make Art. Level the playing field.
+This repository serves as a proxy between the [Level Front End](https://github.com/Level-turing-team/level_front_end) repo and the [Level Zipcode Microservice](https://github.com/Level-turing-team/level-zipcode-microservice) which uses the [ZipcodeBase](https://app.zipcodebase.com/documentation) API. While solely handling API requests and responses to serve profile data back into the front end, using Amazon's S3 Cloud Storage platform to upload and present pictures
 
+![Schema](https://imgur.com/ZuMsLWs.png)
 
 ### Built With
 
 * [Ruby on Rails](https://rubyonrails.org/)
 * [PostgreSQL](https://www.postgresql.org/)
+* [Amazon S3](https://aws.amazon.com/s3/)
 
 <!-- GETTING STARTED -->
 ## Getting Started
